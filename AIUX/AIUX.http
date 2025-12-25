@@ -1,0 +1,6 @@
+@AIUX_HostAddress = http://localhost:5023
+
+GET {{AIUX_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
