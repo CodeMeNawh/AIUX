@@ -32,7 +32,7 @@ namespace AIUX.Services
                 .FirstOrDefaultAsync(u => u.Email == dto.Email);
 
             if (user == null)
-                return null; // No user with this email
+                return null; 
 
             // 2️⃣ Check if the password is correct
             // BCrypt.Verify compares the plain password with the hashed one in the database
