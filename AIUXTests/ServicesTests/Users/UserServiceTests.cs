@@ -10,27 +10,18 @@ namespace AIUXTests.ServicesTests.Users
     
     public class UserServiceTests
     {
-        [Test]
-        public async Task IsTakenEmailAsync_ReturnsTrue_WhenEmailExists() 
-        {
-            //Arrange
-            var (service, user) = await UserServiceFactory.CreateServiceWithUserAsync();
-            //Act
-            var result = await service.IsTakenEmailAsync(user.Email);
-            //Assert
-            Assert.True(result);
-        }
 
-        [Test]
-        public async Task IsTakenEmailAsync_ReturnsFalse_WhenEmailNotExists()
+        [TestCase("mat@onet.pl", true)]
+        [TestCase("nonexistent@test.com", false)]
+        public async Task IsTakenEmailAsync_ExpectedResult(string expectedEmail, bool expected)
         {
             //Arrange
             var (service, _) = await UserServiceFactory.CreateServiceWithUserAsync();
             //Act
-            var result = await service.IsTakenEmailAsync("nonexistent@test.com");
+            var result = await service.IsTakenEmailAsync(expectedEmail);
             //Assert
-            Assert.That(result, Is.False);
-        }
 
+            Assert.That(result, Is.EqualTo(expected));
+        }
     }
 }

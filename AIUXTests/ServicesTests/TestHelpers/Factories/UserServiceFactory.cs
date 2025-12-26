@@ -12,7 +12,7 @@ namespace AIUXTests.ServicesTests.TestHelpers.Factories
     internal static class UserServiceFactory
     {
         internal static async Task<(UserService service, User seededUser)>CreateServiceWithUserAsync(
-            string email = "user@test.com", string password = "Password123")
+            string email = "mat@onet.pl", string password = "Password123")
         {
             var context = DbContextFactory.Create();
             var seededUser = await UserSeeder.SeedUserAsync(context, email, password);
